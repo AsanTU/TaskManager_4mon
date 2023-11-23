@@ -13,17 +13,17 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
 
     private val list = arrayListOf<OnBoarding>(
         OnBoarding(
-            "https://img.freepik.com/premium-photo/female-skilled-mobile-app-developer-specializing-mobile-applications_816702-2138.jpg",
+            "https://cdn3d.iconscout.com/3d/free/thumb/free-mobile-in-hand-4391767-3640494.png",
             "Introduction",
             "Welcome to the best task app."
         ),
         OnBoarding(
-            "https://img.freepik.com/premium-vector/copywriting-flat-illustration-design_203633-1114.jpg",
+            "https://3dicons.sgp1.cdn.digitaloceanspaces.com/v1/dynamic/gradient/copy-dynamic-gradient.png",
             "Instructions",
             "Whatever comes to mind, write here."
         ),
         OnBoarding(
-            "https://img.freepik.com/vecteurs-premium/3d-illustration-web-page-design-development-mobile-app-websites-deploy-working-on-creating-website_808510-1458.jpg?w=360",
+            "https://static.vecteezy.com/system/resources/previews/016/716/172/original/like-3d-icon-png.png",
             "Advantages",
             "You can record as many tasks as you like, whenever and wherever you want."
         )
