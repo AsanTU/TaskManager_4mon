@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
-import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.databinding.FragmentTaskBinding
 import com.example.taskmanager_4mon.model.Task
 

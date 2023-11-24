@@ -5,18 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.databinding.FragmentHomeBinding
 import com.example.taskmanager_4mon.model.Task
 import com.example.taskmanager_4mon.ui.home.adapter.TaskAdapter
-import com.example.taskmanager_4mon.ui.task.TaskFragment
 import com.example.taskmanager_4mon.ui.task.TaskFragment.Companion.TASK_KEY
 import com.example.taskmanager_4mon.ui.task.TaskFragment.Companion.TASK_RESULT_KEY
 

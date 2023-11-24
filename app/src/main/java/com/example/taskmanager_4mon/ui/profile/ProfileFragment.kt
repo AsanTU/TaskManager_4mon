@@ -1,23 +1,17 @@
 package com.example.taskmanager_4mon.ui.profile
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.data.local.Pref
-import com.example.taskmanager_4mon.databinding.FragmentNotificationsBinding
 import com.example.taskmanager_4mon.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private val pref by lazy {

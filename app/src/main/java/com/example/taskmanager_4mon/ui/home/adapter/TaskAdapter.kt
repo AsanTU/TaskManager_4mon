@@ -3,7 +3,6 @@ package com.example.taskmanager_4mon.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.taskmanager_4mon.databinding.ItemTaskBinding
 import com.example.taskmanager_4mon.model.Task
 

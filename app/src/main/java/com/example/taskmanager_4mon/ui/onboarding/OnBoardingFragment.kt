@@ -1,21 +1,16 @@
 package com.example.taskmanager_4mon.ui.onboarding
 
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.data.local.Pref
 import com.example.taskmanager_4mon.databinding.FragmentOnBoardingBinding
 import com.example.taskmanager_4mon.ui.onboarding.adapter.OnBoardingAdapter
-import me.relex.circleindicator.CircleIndicator3
 
 class OnBoardingFragment : Fragment() {
 
@@ -28,7 +23,7 @@ class OnBoardingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentOnBoardingBinding.inflate(inflater, container, false)
         return binding.root
     }
