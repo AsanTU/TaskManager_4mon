@@ -2,17 +2,22 @@ package com.example.taskmanager_4mon.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmanager_4mon.databinding.ItemTaskBinding
 import com.example.taskmanager_4mon.model.Task
+import com.example.taskmanager_4mon.ui.alertdialog.AlertDialogFragment
 
-class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter(
+    val onClick:(task:Task)->Boolean
+) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     private val taskList = arrayListOf<Task>()
 
-    fun addTask(task: Task) {
-        taskList.add(0, task)
-        notifyItemChanged(0) 
+    fun addTasks(tasks: List<Task>) {
+        taskList.clear()
+        taskList.addAll(tasks)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,6 +44,10 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
                     tvTittle.text = title
                     tvDescription.text = desc
                 }
+            }
+
+            itemView.setOnLongClickListener{
+                onClick(task)
             }
         }
     }
