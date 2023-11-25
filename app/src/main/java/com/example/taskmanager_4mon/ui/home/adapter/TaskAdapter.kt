@@ -2,11 +2,9 @@ package com.example.taskmanager_4mon.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmanager_4mon.databinding.ItemTaskBinding
 import com.example.taskmanager_4mon.model.Task
-import com.example.taskmanager_4mon.ui.alertdialog.AlertDialogFragment
 
 class TaskAdapter(
     val onClick:(task:Task)->Boolean

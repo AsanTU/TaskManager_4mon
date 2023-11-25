@@ -37,8 +37,5 @@
         android:name="com.example.taskmanager_4mon.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/alertDialogFragment"
-        android:name="com.example.taskmanager_4mon.ui.alertdialog.AlertDialogFragment"
-        android:label="AlertDialogFragment" />
+
 </navigation>
