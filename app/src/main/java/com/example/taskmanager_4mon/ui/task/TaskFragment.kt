@@ -7,16 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager_4mon.App
+import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.databinding.FragmentTaskBinding
 import com.example.taskmanager_4mon.model.Task
 
 class TaskFragment : Fragment() {
 
     private lateinit var binding: FragmentTaskBinding
+    private var task:Task? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +30,27 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnSave.setOnClickListener {
-            dataTask()
-        }
-    }
 
-    companion object {
-        const val TASK_RESULT_KEY = "task,result.key"
-        const val TASK_KEY = "task.key"
+        task = arguments?.getSerializable("key") as Task?
+        binding.etDesc.setText(task?.desc)
+        binding.etTitle.setText(task?.title)
+
+        if (task!=null){
+            binding.btnSave.text = getString(R.string._update)
+            binding.btnSave.setOnClickListener {
+                val updateTask = task?.copy(
+                    title = binding.etTitle.text.toString(),
+                    desc = binding.etDesc.text.toString()
+                )
+                App.db.taskDao().update(updateTask!!)
+                findNavController().navigateUp()
+            }
+        }else{
+            binding.btnSave.setOnClickListener {
+                dataTask()
+                hideActionBar()
+            }
+        }
     }
 
     private fun isEditText(editText: EditText): Boolean {
@@ -43,16 +58,21 @@ class TaskFragment : Fragment() {
     }
 
     private fun dataTask() {
-        val data = Task(
-            title = binding.etTitle.text.toString(),
-            desc = binding.etDesc.text.toString()
-        )
-        App.db.taskDao().insert(data)
         if (!isEditText(binding.etTitle)) {
-            setFragmentResult(TASK_RESULT_KEY, bundleOf(TASK_KEY to data))
+            save()
             findNavController().navigateUp()
         } else {
             Toast.makeText(requireContext(), "Введите текст", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun save() {
+        val data = Task(title = binding.etTitle.text.toString(), desc = binding.etDesc.text.toString())
+        App.db.taskDao().insert(data)
+    }
+
+    private fun hideActionBar() {
+        val actionBar: ActionBar? = (requireActivity() as? AppCompatActivity)?.supportActionBar
+        actionBar?.hide()
     }
 }
