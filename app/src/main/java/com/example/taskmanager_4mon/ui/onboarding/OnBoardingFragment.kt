@@ -30,8 +30,9 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        circleIndicator()
-        makeStatusBarTransparent()
+        initStatus()
+        binding.viewpager.adapter = adapter
+        binding.indicator.attachTo(binding.viewpager)
     }
 
     private fun onClick() {
@@ -39,19 +40,10 @@ class OnBoardingFragment : Fragment() {
         findNavController().navigate(R.id.navigation_home)
     }
 
-    private fun circleIndicator() {
-        val indicator = binding.indicator
-        val viewPager = binding.viewpager
-        viewPager.adapter = adapter
-        indicator.attachTo(viewPager)
-    }
-
-    private fun makeStatusBarTransparent() {
+    private fun initStatus() {
         activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-
         activity?.window?.statusBarColor = Color.BLACK
-
         activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
     }
 }
