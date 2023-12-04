@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager_4mon.App
@@ -38,6 +39,10 @@ class HomeFragment : Fragment() {
         addTasks()
         binding.rvTasks.adapter = adapter
         hideActionBar()
+        navigateTask()
+    }
+
+    private fun navigateTask() {
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
         }
@@ -52,17 +57,14 @@ class HomeFragment : Fragment() {
                 App.db.taskDao().delete(task)
                 addTasks()
             }
-            .setNegativeButton(getString(R.string.cancel)) { _, _ ->}
+            .setNegativeButton(getString(R.string.cancel)) { _, _ -> }
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
         return true
     }
 
-    private fun onUpdateClick(task: Task):Boolean{
-        val bundle = Bundle()
-        bundle.putSerializable("key", task)
-        findNavController().navigate(R.id.taskFragment, bundle)
-        return true
+    private fun onUpdateClick(task: Task) {
+        findNavController().navigate(R.id.taskFragment, bundleOf(TASK_EDIT_KEY to task))
     }
 
     private fun addTasks() {
@@ -78,5 +80,9 @@ class HomeFragment : Fragment() {
     private fun hideActionBar() {
         val actionBar: ActionBar? = (requireActivity() as? AppCompatActivity)?.supportActionBar
         actionBar?.hide()
+    }
+
+    companion object {
+        const val TASK_EDIT_KEY = "task.edit.key"
     }
 }

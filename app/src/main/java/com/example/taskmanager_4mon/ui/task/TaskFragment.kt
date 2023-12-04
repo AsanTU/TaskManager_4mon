@@ -14,11 +14,12 @@ import com.example.taskmanager_4mon.App
 import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.databinding.FragmentTaskBinding
 import com.example.taskmanager_4mon.model.Task
+import com.example.taskmanager_4mon.ui.home.HomeFragment
 
 class TaskFragment : Fragment() {
 
     private lateinit var binding: FragmentTaskBinding
-    private var task:Task? = null
+    private var task: Task? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,44 +31,36 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setChanges()
+    }
 
-        task = arguments?.getSerializable("key") as Task?
-        binding.etDesc.setText(task?.desc)
-        binding.etTitle.setText(task?.title)
-
-        if (task!=null){
+    private fun setChanges() {
+        val task = arguments?.getSerializable(HomeFragment.TASK_EDIT_KEY) as Task?
+        if (task != null) {
             binding.btnSave.text = getString(R.string._update)
-            binding.btnSave.setOnClickListener {
-                val updateTask = task?.copy(
-                    title = binding.etTitle.text.toString(),
-                    desc = binding.etDesc.text.toString()
-                )
-                App.db.taskDao().update(updateTask!!)
+            binding.etTitle.setText(task.title)
+            binding.etDesc.setText(task.desc)
+        }
+        binding.btnSave.setOnClickListener {
+            if (binding.etTitle.text.isNotEmpty()) {
+                if (task != null) {
+                    update(task)
+                } else save()
                 findNavController().navigateUp()
-            }
-        }else{
-            binding.btnSave.setOnClickListener {
-                dataTask()
-                hideActionBar()
-            }
+            } else binding.etTitle.error = "Error"
         }
     }
 
-    private fun isEditText(editText: EditText): Boolean {
-        return editText.text.trim().isEmpty()
-    }
-
-    private fun dataTask() {
-        if (!isEditText(binding.etTitle)) {
-            save()
-            findNavController().navigateUp()
-        } else {
-            Toast.makeText(requireContext(), "Введите текст", Toast.LENGTH_SHORT).show()
-        }
+    private fun update(task: Task) {
+        App.db.taskDao().update(task.copy(
+            title = binding.etTitle.text.toString(),
+            desc = binding.etDesc.text.toString(),
+        ))
     }
 
     private fun save() {
-        val data = Task(title = binding.etTitle.text.toString(), desc = binding.etDesc.text.toString())
+        val data =
+            Task(title = binding.etTitle.text.toString(), desc = binding.etDesc.text.toString())
         App.db.taskDao().insert(data)
     }
 
