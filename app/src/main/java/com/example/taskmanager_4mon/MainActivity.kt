@@ -12,7 +12,7 @@ import com.example.taskmanager_4mon.data.local.Pref
 import com.example.taskmanager_4mon.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
 
