@@ -27,4 +27,5 @@ class Pref(private val context: Context) {
         const val SHOWED_KEY = "showed.key"
         const val TEXT_KEY = "text.key"
     }
+
 }

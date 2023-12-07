@@ -52,10 +52,12 @@ class TaskFragment : Fragment() {
     }
 
     private fun update(task: Task) {
-        App.db.taskDao().update(task.copy(
-            title = binding.etTitle.text.toString(),
-            desc = binding.etDesc.text.toString(),
-        ))
+        App.db.taskDao().update(
+            task.copy(
+                title = binding.etTitle.text.toString(),
+                desc = binding.etDesc.text.toString(),
+            )
+        )
     }
 
     private fun save() {
@@ -68,4 +70,5 @@ class TaskFragment : Fragment() {
         val actionBar: ActionBar? = (requireActivity() as? AppCompatActivity)?.supportActionBar
         actionBar?.hide()
     }
+
 }

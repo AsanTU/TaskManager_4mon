@@ -40,14 +40,16 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 
-    private fun saveData(){
+    private fun saveData() {
         binding.etProfile.setText(pref.getText())
-        binding.btnSave.setOnClickListener{
+        binding.btnSave.setOnClickListener {
             pref.saveText(binding.etProfile.text.toString())
         }
     }
-    private fun hideActionBar(){
+
+    private fun hideActionBar() {
         val actionBar: ActionBar? = (requireActivity() as? AppCompatActivity)?.supportActionBar
         actionBar?.hide()
     }
+
 }

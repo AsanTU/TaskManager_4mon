@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.databinding.ItemOnboardingBinding
 import com.example.taskmanager_4mon.model.OnBoarding
 
@@ -13,17 +14,17 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
 
     private val list = arrayListOf<OnBoarding>(
         OnBoarding(
-            "https://cdnl.iconscout.com/lottie/premium/preview-watermark/guy-working-from-home-10182046-8326718.mp4",
+            R.raw.lottle1,
             "Introduction",
             "Welcome to the best task app."
         ),
         OnBoarding(
-            "https://cdnl.iconscout.com/lottie/premium/preview-watermark/film-award-10170905-8304785.mp4",
+            R.raw.lottie,
             "Instructions",
             "Whatever comes to mind, write here."
         ),
         OnBoarding(
-            "https://cdnl.iconscout.com/lottie/premium/preview-watermark/hand-gesture-4075138-3370597.mp4",
+            R.raw.like,
             "Advantages",
             "You can record as many tasks as you like, whenever and wherever you want."
         )
@@ -48,11 +49,12 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
     inner class OnBoardingViewHolder(private val binding: ItemOnboardingBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(boarding: OnBoarding) = with(binding){
-            with(boarding){
+        fun bind(boarding: OnBoarding) = with(binding) {
+            with(boarding) {
                 tvTittle.text = boarding.title
                 tvDescription.text = boarding.desc
-                Glide.with(binding.ivBoard).load(image).into(binding.ivBoard)
+                boarding.image?.let { ivBoard.setAnimation(it) }
+
                 btnStart.isVisible = adapterPosition == list.lastIndex
                 tvSkip.isVisible = adapterPosition != list.lastIndex
                 tvSkip.setOnClickListener { onClick() }

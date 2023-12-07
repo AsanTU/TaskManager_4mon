@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmanager_4mon.databinding.ItemTaskBinding
 import com.example.taskmanager_4mon.model.Task
 
-class TaskAdapter(val onClick: (task: Task) -> Boolean,
-                  val onUpdateClick: (task:Task) -> Unit) :
+class TaskAdapter(
+    val onClick: (task: Task) -> Boolean,
+    val onUpdateClick: (task: Task) -> Unit
+) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     private val taskList = arrayListOf<Task>()
@@ -44,9 +46,10 @@ class TaskAdapter(val onClick: (task: Task) -> Boolean,
             itemView.setOnLongClickListener {
                 onClick.invoke(task)
             }
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 onUpdateClick(task)
             }
         }
     }
+
 }
