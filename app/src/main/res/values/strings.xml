@@ -12,4 +12,6 @@
     <string name="_update">Update</string>
     <string name="phone_text">Phone number</string>
     <string name="success_saved">Book success save</string>
+    <string name="exit_text">Вы хотите выйти?</string>
+    <string name="exit_confirmation">Выйти</string>
 </resources>
