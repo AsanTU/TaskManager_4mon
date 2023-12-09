@@ -47,34 +47,21 @@ class PhoneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         giveMessage()
-        setTextCountry()
-    }
-
-    private fun setTextCountry() {
-        binding.etPhone.hint = getString(R.string.phone_text)
-
-        binding.etPhone.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                binding.etPhone.hint = getString(R.string.phone_text)
-                binding.etPhone.text = Editable.Factory.getInstance().newEditable("+996")
-            } else {
-                if (binding.etPhone.text.isEmpty()) {
-                    binding.etPhone.hint = getString(R.string.phone_text)
-                }
-            }
-        }
     }
 
     private fun giveMessage() {
         binding.btnSend.setOnClickListener {
+            var number = "${binding.textNine.prefixText.toString()}${binding.etPhone.text.toString()}"
             val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
-                .setPhoneNumber(binding.etPhone.text.toString())
+                .setPhoneNumber(number)
                 .setTimeout(60, TimeUnit.SECONDS)
                 .setActivity(requireActivity())
                 .setCallbacks(callbacks)
                 .build()
             PhoneAuthProvider.verifyPhoneNumber(options)
         }
+
+
     }
 
     companion object {

@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(){
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
         if (!pref.onShowed()) navController.navigate(R.id.onBoardingFragment)
 
         if (FirebaseAuth.getInstance().currentUser?.uid == null) {

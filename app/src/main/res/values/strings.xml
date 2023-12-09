@@ -11,4 +11,5 @@
     <string name="cancel">Отмена</string>
     <string name="_update">Update</string>
     <string name="phone_text">Phone number</string>
+    <string name="success_saved">Book success save</string>
 </resources>

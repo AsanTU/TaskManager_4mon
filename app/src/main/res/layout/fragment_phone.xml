@@ -2,17 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="15dp"
     android:layout_height="match_parent"
     tools:context=".ui.auth.phone.PhoneFragment">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_phone"
-        android:hint="Phone number"/>
+        android:id="@+id/text_nine"
+        app:prefixText="+996"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_phone"
+            android:hint="Phone number"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:layout_width="wrap_content"

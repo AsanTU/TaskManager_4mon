@@ -32,10 +32,10 @@ class AcceptFragment : Fragment() {
     }
 
     private fun acceptVerification() {
-        val verid = arguments?.getString(PhoneFragment.VER_KEY)
+        val verId = arguments?.getString(PhoneFragment.VER_KEY)
         binding.btnConfirm.setOnClickListener {
             val credential =
-                PhoneAuthProvider.getCredential(verid!!, binding.etCode.text.toString())
+                PhoneAuthProvider.getCredential(verId!!, binding.etCode.text.toString())
             signInWithPhoneAuthCredential(credential)
         }
     }

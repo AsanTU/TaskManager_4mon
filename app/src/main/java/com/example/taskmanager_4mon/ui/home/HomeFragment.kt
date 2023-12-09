@@ -1,14 +1,18 @@
 package com.example.taskmanager_4mon.ui.home
 
 import android.os.Bundle
+import android.support.v4.os.IResultReceiver.Default
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager_4mon.App
 import com.example.taskmanager_4mon.R
@@ -40,6 +44,9 @@ class HomeFragment : Fragment() {
         binding.rvTasks.adapter = adapter
         hideActionBar()
         navigateTask()
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
+            requireActivity().finish()
+        }
     }
 
     private fun navigateTask() {
