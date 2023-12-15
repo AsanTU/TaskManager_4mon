@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager_4mon.R
@@ -46,6 +48,7 @@ class PhoneFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        hideActionBar()
         giveMessage()
     }
 
@@ -62,6 +65,11 @@ class PhoneFragment : Fragment() {
         }
 
 
+    }
+
+    private fun hideActionBar() {
+        val actionBar: ActionBar? = (requireActivity() as? AppCompatActivity)?.supportActionBar
+        actionBar?.hide()
     }
 
     companion object {

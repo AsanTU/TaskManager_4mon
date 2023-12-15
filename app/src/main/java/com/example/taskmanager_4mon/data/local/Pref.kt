@@ -26,10 +26,6 @@ class Pref(private val context: Context) {
         pref.edit().putString(IMAGE_URI_KEY, imageUri).apply()
     }
 
-    fun getImageUri(): String? {
-        return pref.getString(IMAGE_URI_KEY, "")
-    }
-
     companion object {
         const val IMAGE_URI_KEY = "image_uri.key"
         const val PREF_NAME = "pref.name"

@@ -25,12 +25,12 @@
         app:civ_border_width="2dp"
         app:civ_border_color="#FF000000"/>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_profile"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
-        android:background="@color/perple"
+        android:background="@drawable/gradient_tasks"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"
         android:hint="Username"
@@ -40,9 +40,11 @@
     <Button
         android:id="@+id/btn_save"
         android:text="SAVE"
+        android:layout_gravity="center_horizontal"
         android:layout_marginHorizontal="16dp"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/gradient_btn_dialog"
         android:layout_height="wrap_content"/>
-
 
 </LinearLayout>

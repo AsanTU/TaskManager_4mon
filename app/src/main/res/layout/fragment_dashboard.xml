@@ -7,25 +7,32 @@
     android:padding="16dp"
     tools:context=".ui.task.TaskFragment">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:paddingStart="20dp"
         android:id="@+id/et_name"
+        android:background="@drawable/gradient_tasks"
         android:hint="Name"/>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:background="@drawable/gradient_tasks"
+        android:paddingStart="20dp"
         android:id="@+id/et_author"
         android:layout_marginTop="8dp"
         android:hint="Author"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
         android:id="@+id/btn_save"
         android:layout_gravity="center"
         android:text="Save"
+        android:textColor="@color/white"
+        android:background="@drawable/gradient_no_dialog"
         android:layout_marginTop="16dp"/>
 
 </LinearLayout>

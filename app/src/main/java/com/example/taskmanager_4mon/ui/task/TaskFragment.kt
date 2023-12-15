@@ -31,6 +31,7 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        hideActionBar()
         setChanges()
     }
 
@@ -42,7 +43,7 @@ class TaskFragment : Fragment() {
             binding.etDesc.setText(task.desc)
         }
         binding.btnSave.setOnClickListener {
-            if (binding.etTitle.text.isNotEmpty()) {
+            if (binding.etTitle.text?.isNotEmpty() == true) {
                 if (task != null) {
                     update(task)
                 } else save()

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.databinding.FragmentDashboardBinding
@@ -30,10 +32,15 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-        btnSave.setOnClickListener {
+        hideActionBar()
+        saveData()
+    }
+
+    private fun saveData() {
+        binding.btnSave.setOnClickListener {
             val data = Book(
-                name = etName.text.toString(),
-                author = etAuthor.text.toString(),
+                name = binding.etName.text.toString(),
+                author = binding.etAuthor.text.toString(),
             )
             db.collection(FirebaseAuth.getInstance().currentUser?.uid.toString())
                 .add(data)
@@ -46,6 +53,10 @@ class DashboardFragment : Fragment() {
         }
     }
 
+    private fun hideActionBar() {
+        val actionBar: ActionBar? = (requireActivity() as? AppCompatActivity)?.supportActionBar
+        actionBar?.hide()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

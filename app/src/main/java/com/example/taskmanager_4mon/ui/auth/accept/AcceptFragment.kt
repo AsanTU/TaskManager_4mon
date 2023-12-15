@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.taskmanager_4mon.R
 import com.example.taskmanager_4mon.databinding.FragmentAcceptBinding
@@ -28,6 +30,7 @@ class AcceptFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        hideActionBar()
         acceptVerification()
     }
 
@@ -49,6 +52,11 @@ class AcceptFragment : Fragment() {
             .addOnFailureListener {
                 showToast(it.message.toString())
             }
+    }
+
+    private fun hideActionBar() {
+        val actionBar: ActionBar? = (requireActivity() as? AppCompatActivity)?.supportActionBar
+        actionBar?.hide()
     }
 
 }

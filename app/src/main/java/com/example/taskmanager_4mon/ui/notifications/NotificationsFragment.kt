@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.taskmanager_4mon.databinding.FragmentNotificationsBinding
 import com.example.taskmanager_4mon.model.Book
@@ -35,6 +37,7 @@ class NotificationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
         saveDataBase()
+        hideActionBar()
     }
 
     private fun saveDataBase() {
@@ -46,6 +49,11 @@ class NotificationsFragment : Fragment() {
             .addOnFailureListener {
                 showToast(it.message.toString())
             }
+    }
+
+    private fun hideActionBar() {
+        val actionBar: ActionBar? = (requireActivity() as? AppCompatActivity)?.supportActionBar
+        actionBar?.hide()
     }
 
     override fun onDestroyView() {
